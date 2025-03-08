@@ -1,0 +1,84 @@
+@import "tailwindcss";
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"); */
+
+@font-face {
+  font-family: "Vazir";
+  src: url("/fonts/vazir/Vazir-Thin-FD-WOL-UI.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Vazir";
+  src: url("/fonts/vazir/Vazir-Light-FD-WOL-UI.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Vazir";
+  src: url("/fonts/vazir/Vazir-Regular-FD-WOL-UI.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Vazir";
+  src: url("/fonts/vazir/Vazir-Medium-FD-WOL-UI.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Vazir";
+  src: url("/fonts/vazir/Vazir-Bold-FD-WOL-UI.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Vazir";
+  src: url("/fonts/vazir/Vazir-Black-FD-WOL-UI.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "Sahel";
+  src: url("/fonts/sahel/sahel-400.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Sahel";
+  src: url("/fonts/sahel/sahel-600.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Sahel";
+  src: url("/fonts/sahel/sahel-700.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Sahel";
+  src: url("/fonts/sahel/sahel-900.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 900;
+}
+
+@theme {
+  --font-vazir: "Vazir";
+  --font-roboto: "Roboto";
+  --font-sahel: "Sahel";
+}
+
+@layer {
+  body {
+    @apply font-vazir;
+  }
+}
