@@ -33,6 +33,22 @@ class AuthService extends BaseService {
       console.log(error);
     }
   };
+  signin = async (data) => {
+    try {
+      const url = this._formatURLTemplate(APIPath.getSignin(), {
+        clientId: data.clientId,
+        clientUri: data.clientUri,
+      });
+      const reqBody = { identifier: data.identifier, password: data.password };
+      const res = await api.post(url, reqBody);
+
+      const serviceResponse = await this._getServiceResponse(res);
+      
+      return serviceResponse;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 export default AuthService;

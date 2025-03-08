@@ -2,10 +2,27 @@ import React from "react";
 import Input from "../components/shared/Input";
 import Button from "../components/shared/Button";
 import { useNavigate, useSearchParams } from "react-router";
+import { useForm } from "react-hook-form";
+import { joiResolver } from "@hookform/resolvers/joi";
+import SigninSchema from "../utils/validators/signin.validator";
+import useFetch from "../hooks/useFetch";
+import AuthService from "../services/AuthService";
 
-const Login = () => {
+const Signin = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const { register, handleSubmit } = useForm({
+    resolver: joiResolver(SigninSchema.getSigninSchema()),
+  });
+  const { fetchData } = useFetch(new AuthService().signin);
+
+  const signinHandler = (data) => {
+    fetchData({
+      ...data,
+      clientId: searchParams.get("clientId"),
+      clientUri: searchParams.get("clientUri"),
+    });
+  };
 
   const navigateToSignupHandler = () => {
     const queryStrings = searchParams.toString();
@@ -22,23 +39,29 @@ const Login = () => {
               <h1 className="mb-16 text-5xl text-slate-800 leading-20 font-sahel font-bold border-b border-slate-400 pb-2">
                 ورود
               </h1>
-              
+
               {/* Input field */}
               <div className="flex flex-col gap-8">
                 <Input
                   label="شناسه کاربری"
                   placeholder="شماره ملی، شماره دانشجویی یا تلفن همراه"
+                  {...register("identifier")}
                 />
                 <Input
                   label="رمز عبور"
                   placeholder="رمز عبور خود را وارد کنید"
                   type="password"
+                  {...register("password")}
                 />
               </div>
             </div>
             {/* Buttons */}
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end">
-              <Button label="ورود" onClick={() => {}} className="w-full" />
+              <Button
+                label="ورود"
+                onClick={handleSubmit(signinHandler)}
+                className="w-full"
+              />
               <div className="flex items-center gap-2 flex-col w-full">
                 <span>حساب کاربری ندارید؟</span>
                 <Button
@@ -56,4 +79,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signin;

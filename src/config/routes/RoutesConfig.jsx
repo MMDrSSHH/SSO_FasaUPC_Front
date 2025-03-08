@@ -1,13 +1,13 @@
 import { Navigate, Route, Routes } from "react-router";
 import NotFound from "../../pages/NotFound";
-import Login from "../../pages/Login";
+import Signin from "../../pages/Signin";
 import Signup from "../../pages/Signup";
 
 const RoutesConfig = () => {
   return (
     <Routes>
       <Route index element={<Navigate replace to="/login" />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<Signin />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
